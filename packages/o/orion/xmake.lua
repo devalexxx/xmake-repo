@@ -11,16 +11,16 @@ package("orion")
 
     add_urls("https://github.com/alspin8/Orion.git")
 
-    add_versions("1.0a1", "d12a059733773f90e1e6148b13fe26e34dedadaf")
+    add_versions("1.0a1", "fa1dff9a54a9b02464424adfc4f944f2f0bd79c3")
 
     on_install(function (package)
         import("package.tools.xmake").install(package)
     end)
 
-    --on_test(function (package)
-    --    assert(package:check_cxxsnippets({test = [[
-    --        void test(int args, char** argv) {
-    --            orion::Vector3f v;
-    --        }
-    --    ]]}, { includes = { "orion/omath.h" } }))
-    --end)
+    on_test(function (package)
+        assert(package:check_cxxsnippets({test = [[
+            void test(int args, char** argv) {
+                orion::Vector3f v;
+            }
+        ]]}, { includes = { "orion/omath.h" } }))
+    end)
