@@ -11,7 +11,7 @@ package("orion")
 
     set_urls("https://github.com/alspin8/Orion.git")
 
-    add_versions("1.0a2", "450e46eb6d3437055d1c0bb92d81803fe73adc2f")
+    --add_versions("1.0a2", "450e46eb6d3437055d1c0bb92d81803fe73adc2f")
 
     on_install(function (package)
         import("package.tools.xmake").install(package)
