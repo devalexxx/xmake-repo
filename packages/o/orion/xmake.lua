@@ -4,7 +4,7 @@
 --- DateTime: 20/01/2024 10:36
 ---
 
-package("orion")
+package("orion_pkg")
     set_description("The orion package")
     set_homepage("https://github.com/alspin8/Orion")
     set_license("MIT")
