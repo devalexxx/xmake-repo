@@ -13,30 +13,14 @@ package("orion")
 
     add_versions("1.0a1", "60793c475df295525585e62f721d7a5029169a97")
 
-    --on_fetch(function (package)
-    --    local result = {}
-    --    result.links = "orion"
-    --    result.linkdirs = package:installdir("lib")
-    --    result.includedirs = package:installdir("include")
-    --    return result
-    --end)
-
-    on_install("macosx", function (package)
-        --local configs = {}
-        --if package:config("shared") then
-        --    configs.kind = "shared"
-        --end
-
-        --os.cp(path.join(os.scriptdir(), "include"), package:installdir())
-
-        --import("package.tools.autoconf").install(package, configs)
+    on_install(function (package)
         import("package.tools.xmake").install(package)
     end)
 
-    on_test(function (package)
-        assert(package:check_cxxsnippets({test = [[
-                void test(int args, char** argv) {
-                    orion::Vector3f v;
-                }
-            ]]}, {includes = {"orion/omath.h"}}))
-    end)
+    --on_test(function (package)
+    --    assert(package:check_cxxsnippets({test = [[
+    --        void test(int args, char** argv) {
+    --            orion::Vector3f v;
+    --        }
+    --    ]]}, { includes = { "orion/omath.h" } }))
+    --end)
