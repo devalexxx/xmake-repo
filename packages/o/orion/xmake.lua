@@ -11,7 +11,7 @@ package("orion")
 
     add_urls("https://github.com/alspin8/Orion.git")
 
-    add_versions("1.0a1", "9c8598db49e4513c211ed49f74c9ad0448441634")
+    add_versions("1.0a1", "4cffd97e9a2fbef40d3bc58a3183c74bc68ee811")
 
     --on_fetch(function (package)
     --    local result = {}
