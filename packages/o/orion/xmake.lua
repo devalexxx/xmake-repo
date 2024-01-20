@@ -30,5 +30,5 @@ package("orion")
         --os.cp(path.join(os.scriptdir(), "include"), package:installdir())
 
         --import("package.tools.autoconf").install(package, configs)
-        import("package.tools.autoconf").install(package)
+        import("package.tools.xmake").install(package)
     end)
