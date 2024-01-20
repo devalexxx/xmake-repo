@@ -11,7 +11,7 @@ package("orion")
 
     add_urls("https://github.com/alspin8/Orion.git")
 
-    add_versions("1.0a1", "4cffd97e9a2fbef40d3bc58a3183c74bc68ee811")
+    add_versions("1.0a1", "60793c475df295525585e62f721d7a5029169a97")
 
     --on_fetch(function (package)
     --    local result = {}
@@ -22,10 +22,10 @@ package("orion")
     --end)
 
     on_install(function (package)
-        local configs = {}
-        if package:config("shared") then
-            configs.kind = "shared"
-        end
+        --local configs = {}
+        --if package:config("shared") then
+        --    configs.kind = "shared"
+        --end
 
         --os.cp(path.join(os.scriptdir(), "include"), package:installdir())
 
