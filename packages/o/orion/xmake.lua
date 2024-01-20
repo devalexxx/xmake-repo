@@ -13,13 +13,13 @@ package("orion")
 
     add_versions("1.0a1", "9c8598db49e4513c211ed49f74c9ad0448441634")
 
-    on_fetch(function (package)
-        local result = {}
-        result.links = "orion"
-        result.linkdirs = package:installdir("lib")
-        result.includedirs = package:installdir("include")
-        return result
-    end)
+    --on_fetch(function (package)
+    --    local result = {}
+    --    result.links = "orion"
+    --    result.linkdirs = package:installdir("lib")
+    --    result.includedirs = package:installdir("include")
+    --    return result
+    --end)
 
     on_install(function (package)
         local configs = {}
@@ -29,5 +29,5 @@ package("orion")
 
         --os.cp("include", package:installdir())
 
-        import("package.tools.xmake").install(package, configs)
+        import("package.tools.autoconf").install(package, configs)
     end)
