@@ -9,7 +9,7 @@ package("orion")
     set_homepage("https://github.com/alspin8/Orion")
     set_license("MIT")
 
-    add_urls("https://github.com/alspin8/Orion.git")
+    set_urls("https://github.com/alspin8/Orion.git")
 
     add_versions("1.0a1", "fa1dff9a54a9b02464424adfc4f944f2f0bd79c3")
 
