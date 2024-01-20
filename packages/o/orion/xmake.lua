@@ -4,7 +4,7 @@
 --- DateTime: 20/01/2024 10:36
 ---
 
-package("orion_pkg")
+package("orion")
     set_description("The orion package")
     set_homepage("https://github.com/alspin8/Orion")
     set_license("MIT")
@@ -21,7 +21,7 @@ package("orion_pkg")
     --    return result
     --end)
 
-    on_install(function (package)
+    on_install("macosx", function (package)
         --local configs = {}
         --if package:config("shared") then
         --    configs.kind = "shared"
