@@ -27,7 +27,7 @@ package("orion")
             configs.kind = "shared"
         end
 
-        os.cp(path.join(os.scriptdir(), "include"), package:installdir())
+        --os.cp(path.join(os.scriptdir(), "include"), package:installdir())
 
         import("package.tools.autoconf").install(package, configs)
     end)
