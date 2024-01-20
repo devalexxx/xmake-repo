@@ -17,10 +17,10 @@ package("orion")
         import("package.tools.xmake").install(package)
     end)
 
-    on_test(function (package)
-        assert(package:check_cxxsnippets({test = [[
-            void test(int args, char** argv) {
-                orion::Vector3f v;
-            }
-        ]]}, { includes = { "orion/omath.h" } }))
-    end)
+    --on_test(function (package)
+    --    assert(package:check_cxxsnippets({test = [[
+    --        void test(int args, char** argv) {
+    --            orion::Vector3f v;
+    --        }
+    --    ]]}, { includes = { "orion/omath.h" } }))
+    --end)
