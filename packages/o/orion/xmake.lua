@@ -23,7 +23,8 @@ package("orion")
         configs.nogpu    = false
 
         configs.mode   = package:is_debug() and "debug" or "release"
-        configs.option = table.insert(configs.option or {},{ shared = package:config("shared") } )
+        --configs.option = table.insert(configs.option or {},{ shared = package:config("shared") } )
+        configs.shared = package:config("shared")
 
         import("package.tools.xmake").install(package, configs)
     end)
