@@ -14,6 +14,9 @@ package("orion")
     --add_versions("1.0a2", "450e46eb6d3437055d1c0bb92d81803fe73adc2f")
 
     on_install(function (package)
+
+        package:add("deps", "glfw", "glew", "fmt", "stb")
+
         import("package.tools.xmake").install(package)
     end)
 
