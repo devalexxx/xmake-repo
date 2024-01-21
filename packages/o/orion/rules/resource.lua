@@ -8,7 +8,7 @@ local function create_resource_rule(name)
     rule("resource." .. name)
         on_config(function (target)
             print("Copying " .. name .. " on " .. target:name() .. " config.")
-            os.cp("$(projectdir)/resource/" .. name .. "/*", "$(buildir)/$(plat)/$(arch)/$(mode)/resource/" .. name .. "/")
+            os.cp("$(programdir)/resource/" .. name .. "/*", "$(buildir)/$(plat)/$(arch)/$(mode)/resource/" .. name .. "/")
         end)
 end
 
