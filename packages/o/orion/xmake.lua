@@ -22,18 +22,8 @@ package("orion")
         configs.examples = false
         configs.nogpu    = false
 
-        if package:is_debug() then
-            configs.mode = "debug"
-            print("debug")
-        else
-           configs.mode = "release"
-        end
-
-        if package:config("shared") then
-            print("shared")
-        end
-
-        configs.option = table.insert(configs.option or {},{ shared = package:config("shared") } )
+        configs.mode    = package:is_debug() and "debug" or "release"
+        configs.options = table.insert(configs.options or {},{ shared = package:config("shared") } )
 
         import("package.tools.xmake").install(package, configs)
     end)
