@@ -28,8 +28,10 @@ package("orion")
            configs.mode = "release"
         end
 
-            import("package.tools.xmake").install(package, configs)
-        end)
+        configs.option = table.insert(configs.option or {},{ shared = package:configs("share") and "y" or "n" } )
+
+        import("package.tools.xmake").install(package, configs)
+    end)
 
     on_test(function (package)
         assert(package:check_cxxsnippets({test = [[
