@@ -28,7 +28,7 @@ package("orion")
            configs.mode = "release"
         end
 
-        configs.option = table.insert(configs.option or {},{ shared = package:configs("share") and "y" or "n" } )
+        configs.option = table.insert(configs.option or {},{ shared = package:configs("shared") and "y" or "n" } )
 
         import("package.tools.xmake").install(package, configs)
     end)
