@@ -11,7 +11,7 @@ package("orion")
 
     set_urls("https://github.com/alspin8/Orion.git")
 
-    add_versions("1.0a1", "6a19a40efa27bf1488c0ee9a6edf15af96072842")
+    add_versions("1.0a1", "7e97f7aa8ab3a9131657e1203c7937ccea19448b")
 
     add_deps("glfw", "glew", "fmt", "stb")
 
