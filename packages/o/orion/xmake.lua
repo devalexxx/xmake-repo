@@ -24,11 +24,16 @@ package("orion")
 
         if package:is_debug() then
             configs.mode = "debug"
+            print("debug")
         else
            configs.mode = "release"
         end
 
-        configs.option = table.insert(configs.option or {},{ shared = package:configs("shared") and "y" or "n" } )
+        if package:config("shared") then
+            print("shared")
+        end
+
+        configs.option = table.insert(configs.option or {},{ shared = package:config("shared") } )
 
         import("package.tools.xmake").install(package, configs)
     end)
