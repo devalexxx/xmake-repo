@@ -13,19 +13,28 @@ package("orion")
 
     --add_versions("1.0a2", "450e46eb6d3437055d1c0bb92d81803fe73adc2f")
 
-    on_load(function (package)
-        package:add("deps", "glfw", "glew", "fmt", "stb")
-    end)
+    add_deps("glfw", "glew", "fmt", "stb")
 
     on_install(function (package)
+        local configs = {}
+        configs.unittest = false
+        configs.sandbox  = false
+        configs.examples = false
+        configs.nogpu    = false
 
-        import("package.tools.xmake").install(package)
+        if package:is_debug() then
+            configs.mode = "debug"
+        else
+           configs.mode = "release"
+        end
+
+            import("package.tools.xmake").install(package, configs)
+        end)
+
+    on_test(function (package)
+        assert(package:check_cxxsnippets({test = [[
+            void test(int args, char** argv) {
+                orion::Vector3f v;
+            }
+        ]]}, { includes = { "orion/omath.h" } }))
     end)
-
-    --on_test(function (package)
-    --    assert(package:check_cxxsnippets({test = [[
-    --        void test(int args, char** argv) {
-    --            orion::Vector3f v;
-    --        }
-    --    ]]}, { includes = { "orion/omath.h" } }))
-    --end)
