@@ -15,7 +15,6 @@ local function create_resource_rule(name)
                 orionresourcedir = path.join(orion:installdir(), "resource")
             end
 
-            print("Copying " .. name .. " on " .. target:name() .. " config.")
             os.cp(orionresourcedir .. "/" .. name .. "/*", "$(buildir)/$(plat)/$(arch)/$(mode)/resource/" .. name .. "/")
         end)
 end
