@@ -7,8 +7,16 @@
 local function create_resource_rule(name)
     rule("resource." .. name)
         on_config(function (target)
+            import("core.project.project")
+
+            local orion = project.required_package("orion")
+            local orionresourcedir
+            if orion then
+                orionresourcedir = path.join(orion:installdir(), "resource")
+            end
+
             print("Copying " .. name .. " on " .. target:name() .. " config.")
-            os.cp("$(programdir)/resource/" .. name .. "/*", "$(buildir)/$(plat)/$(arch)/$(mode)/resource/" .. name .. "/")
+            os.cp(orionresourcedir .. "/" .. name .. "/*", "$(buildir)/$(plat)/$(arch)/$(mode)/resource/" .. name .. "/")
         end)
 end
 
