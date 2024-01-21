@@ -6,9 +6,10 @@
 
 local function create_resource_rule(name)
     rule("resource." .. name)
-    before_build(function (opt)
-        os.cp("$(projectdir)/resource/" .. name .. "/*", "$(buildir)/$(plat)/$(arch)/$(mode)/resource/" .. name .. "/")
-    end)
+        on_config(function (target)
+            print("Copying " .. name .. " on " .. target:name() .. " config.")
+            os.cp("$(projectdir)/resource/" .. name .. "/*", "$(buildir)/$(plat)/$(arch)/$(mode)/resource/" .. name .. "/")
+        end)
 end
 
 create_resource_rule("shader")
