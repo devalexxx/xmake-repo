@@ -36,5 +36,5 @@ package("orion")
             void test(int args, char** argv) {
                 orion::Vector3f v;
             }
-        ]]}, { includes = { "orion/omath.h" } }))
+        ]]}, { configs = {languages = "c++23"}, includes = { "orion/omath.h" } }))
     end)
