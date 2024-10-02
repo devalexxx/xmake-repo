@@ -6,10 +6,10 @@
 
 package("orion")
     set_description("The orion package")
-    set_homepage("https://github.com/alspin8/Orion")
+    set_homepage("https://github.com/devalexx/Orion")
     set_license("MIT")
 
-    set_urls("https://github.com/alspin8/Orion.git")
+    set_urls("https://github.com/devalexxx/Orion.git")
 
     add_versions("1.0a1", "7e97f7aa8ab3a9131657e1203c7937ccea19448b")
 
