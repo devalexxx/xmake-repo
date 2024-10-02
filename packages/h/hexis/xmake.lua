@@ -11,7 +11,7 @@ package("hexis")
 
     set_urls("https://github.com/devalexxx/Hexis.git")
 
-    add_versions("latest", "bb24816e466986e3b9b90499f826463c4958a762")
+    add_versions("latest", "5478bc292638998f8860b28272cc1ae5dab9ce17")
 
     on_install(function (package)
         local configs = {}
