@@ -11,9 +11,12 @@ package("hexis")
 
     set_urls("https://github.com/devalexxx/Hexis.git")
 
-    add_versions("latest", "037dc206b4052624427941c77b9a80c3bc225ef2")
+    on_component("Core", function(package, component)
+        -- component:add("links", "libMath")
+    end)
 
-    on_components("Math", function(package, component)
+    on_component("Math", function(package, component)
+        -- component:add("links", "libMath")
         component:add("deps", "Core")
     end)
 
@@ -35,7 +38,7 @@ package("hexis")
     on_test(function (package)
         assert(package:check_cxxsnippets({test = [[
             void test(int args, char** argv) {
-                Hexis::Vec3f v;
+                Hx::Vec3f v(1.F, 2.F, 3.F);
             }
         ]]}, { configs = {languages = "c++23"}, includes = { "Hexis/Math/Vec3.h" } }))
     end)
