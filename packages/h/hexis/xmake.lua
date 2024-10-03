@@ -11,15 +11,27 @@ package("hexis")
 
     set_urls("https://github.com/devalexxx/Hexis.git")
 
-    add_versions("latest", "037dc206b4052624427941c77b9a80c3bc225ef2")
+    add_configs("shared", { description = "Build shared library.", default = false, type = "boolean" })
+    add_configs("math",   { description = "Use the math module",   default = false, type = "boolean" })
 
-    on_components("Math", function(package, component)
-        component:add("deps", "Core")
+    on_component("core", function(package, component)
+        -- component:add("links", "HXCore")
+    end)
+
+    on_component("math", function(package, component)
+        -- component:add("links", "HXMath")
+        component:add("deps", "core")
     end)
 
     on_load(function (package)
-        package:add("components", "Core")
-        package:add("components", "Math")
+        package:add("components", "core")
+
+        -- Adding selected components
+        for _, component in ipairs({ "math" }) do
+            if package:config(component) then
+                package:add("components", component)
+            end
+        end
     end)
 
     on_install(function (package)
@@ -29,13 +41,28 @@ package("hexis")
         configs.mode   = package:is_debug() and "debug" or "release"
         configs.shared = package:config("shared")
 
+        -- Adding selected component
+        for _, component in ipairs({ "math" }) do
+            if package:config(component) then
+                configs[component] = true
+            end
+        end
+
         import("package.tools.xmake").install(package, configs)
     end)
 
     on_test(function (package)
         assert(package:check_cxxsnippets({test = [[
             void test(int args, char** argv) {
-                Hexis::Vec3f v;
+                Hx::TypeList<int, float>;
             }
-        ]]}, { configs = {languages = "c++23"}, includes = { "Hexis/Math/Vec3.h" } }))
+        ]]}, { configs = { languages = "c++23" }, includes = { "Hexis/Core/TypeList.h" } }))
+
+        if package:config("math") then
+            assert(package:check_cxxsnippets({test = [[
+                void test(int args, char** argv) {
+                    Hx::Equal(1.f, 1.f);
+                }
+            ]]}, { configs = { languages = "c++23" }, includes = { "Hexis/Math/FloatingPoint.h" } }))
+        end
     end)
