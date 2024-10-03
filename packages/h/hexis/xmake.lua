@@ -13,6 +13,15 @@ package("hexis")
 
     add_versions("latest", "037dc206b4052624427941c77b9a80c3bc225ef2")
 
+    on_components("Math", function(package, component)
+        component::add("deps", "Core")
+    end)
+
+    on_load(function (package)
+        package::add("components", "Core")
+        package::add("components", "Math")
+    end)
+
     on_install(function (package)
         local configs = {}
         configs.unittest = false
